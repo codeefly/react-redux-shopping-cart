@@ -7,13 +7,14 @@ const Header = () => {
             <div className="logo">
                 <img src="/images/logo.png" alt="" width="100" />
             </div>
-
-            <Link href="/signin">
-                <a>Signup</a>
-            </Link>
-            <Link href="/signin">
-                <a>Signin</a>
-            </Link>
+            <div>
+                <Link href="/signup">
+                    <a className="me-5">Signup</a>
+                </Link>
+                <Link href="/signin">
+                    <a>Signin</a>
+                </Link>
+            </div>
         </div>
     );
 };
