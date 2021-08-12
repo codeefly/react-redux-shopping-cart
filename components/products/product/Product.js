@@ -1,7 +1,10 @@
 import React from "react";
 
-const Product = ({ productData }) => {
-    console.log(productData);
+import { connect } from "react-redux";
+import { addToCart } from "../../../redux/shopping/shopping-actions";
+
+const Product = ({ productData, addToCart }) => {
+    // console.log(productData);
     return (
         <div className="col-xl-4">
             <div className="card">
@@ -17,7 +20,12 @@ const Product = ({ productData }) => {
 
                     <div className="mt-5 d-flex justify-content-between">
                         <div>View more</div>
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => addToCart(productData.id)}
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
@@ -25,4 +33,10 @@ const Product = ({ productData }) => {
     );
 };
 
-export default Product;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (id) => dispatch(addToCart(id)),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Product);
