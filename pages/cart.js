@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "../components/layout/Header";
+import CartComponent from './../components/cart/Cart';
 
-const Signin = () => {
+const Cart = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
     };
@@ -11,6 +12,7 @@ const Signin = () => {
                 <div className="row">
                     <div className="col-xl-12">
                         <Header />
+                        <CartComponent/>
                     </div>
                 </div>
             </div>
@@ -18,4 +20,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default Cart;
