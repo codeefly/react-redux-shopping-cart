@@ -1,9 +1,13 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { addToCart } from "../../../redux/shopping/shopping-actions";
+import {
+    addToCart,
+    loadCurrentItem,
+} from "../../../redux/shopping/shopping-actions";
+import  Link  from "next/link";
 
-const Product = ({ productData, addToCart }) => {
+const Product = ({ productData, addToCart, loadCurrentItem }) => {
     // console.log(productData);
     return (
         <div className="col-xl-4">
@@ -19,7 +23,9 @@ const Product = ({ productData, addToCart }) => {
                     <h5 className="text-primary">$ {productData.price}</h5>
 
                     <div className="mt-5 d-flex justify-content-between">
-                        <div>View more</div>
+                        <Link href={`/product/${productData.id}`}>
+                            <a onClick={()=> loadCurrentItem()}>View more</a>
+                        </Link>
                         <button
                             className="btn btn-primary"
                             onClick={() => addToCart(productData.id)}
@@ -36,6 +42,7 @@ const Product = ({ productData, addToCart }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id) => dispatch(addToCart(id)),
+        loadCurrentItem: (item) => dispatch(loadCurrentItem(item)),
     };
 };
 
